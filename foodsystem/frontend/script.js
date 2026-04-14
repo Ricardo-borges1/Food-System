@@ -80,7 +80,7 @@ async function esqueciSenha() {
     const data = await res.json();
     document.getElementById('msg').innerText = data.mensagem;
   } catch (error) {
-    document.getElementById('msg').innerText = 'Erro ao verificar email';
+    document.getElementById('msg').innerText = 'Erro ao solicitar recuperação';
     console.error(error);
   }
 }

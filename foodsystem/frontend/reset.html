@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Redefinir senha</title>
+</head>
+<body>
+  <h2>Redefinir senha</h2>
+
+  <input type="password" id="novaSenha" placeholder="Digite a nova senha">
+  <button onclick="resetarSenha()">Salvar nova senha</button>
+
+  <p id="msgReset"></p>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get('token');
+
+    async function resetarSenha() {
+      const novaSenha = document.getElementById('novaSenha').value;
+
+      const res = await fetch('http://localhost:3000/usuarios/reset-senha', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token, novaSenha })
+      });
+
+      const data = await res.json();
+      document.getElementById('msgReset').innerText = data.mensagem;
+    }
+  </script>
+</body>
+</html>

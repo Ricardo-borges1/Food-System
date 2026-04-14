@@ -1,7 +1,8 @@
 
-// CREATE
 const db = require('../config/db');
 const bcrypt = require('bcrypt');
+const crypto = require('crypto');
+const transporter = require('../config/email');
 
 // CREATE
 exports.criarUsuario = async (req, res) => {
@@ -46,6 +47,97 @@ exports.criarUsuario = async (req, res) => {
     res.status(500).json({ mensagem: 'Erro ao cadastrar usuário' });
   }
 };
+
+
+
+exports.esqueciSenha = (req, res) => {
+  const { email } = req.body;
+
+  if (!email) {
+    return res.status(400).json({ mensagem: 'Informe o email' });
+  }
+
+  const token = crypto.randomBytes(20).toString('hex');
+
+  db.query(
+    'SELECT * FROM usuarios WHERE email = ?',
+    [email],
+    (err, result) => {
+      if (err) return res.status(500).json(err);
+
+      if (result.length === 0) {
+        return res.status(404).json({ mensagem: 'Email não encontrado' });
+      }
+
+      db.query(
+        `UPDATE usuarios 
+         SET reset_token = ?, reset_expira = DATE_ADD(NOW(), INTERVAL 1 HOUR)
+         WHERE email = ?`,
+        [token, email],
+        (err2) => {
+          if (err2) return res.status(500).json(err2);
+
+          const link = `http://127.0.0.1:5500/reset.html?token=${token}`;
+
+          transporter.sendMail({
+            to: email,
+            subject: 'Recuperação de senha - Food System',
+            html: `
+              <h2>Redefinição de senha</h2>
+              <p>Você solicitou a troca de senha.</p>
+              <p>Clique no link abaixo para redefinir:</p>
+              <a href="${link}">${link}</a>
+              <p>Esse link expira em 1 hora.</p>
+            `
+          }, (mailErr) => {
+            if (mailErr) {
+              return res.status(500).json({
+                mensagem: 'Erro ao enviar email',
+                erro: mailErr
+              });
+            }
+
+            res.json({ mensagem: 'Email de recuperação enviado com sucesso!' });
+          });
+        }
+      );
+    }
+  );
+};
+
+exports.resetSenha = async (req, res) => {
+  const { token, novaSenha } = req.body;
+
+  if (!token || !novaSenha) {
+    return res.status(400).json({ mensagem: 'Token e nova senha são obrigatórios' });
+  }
+
+  try {
+    const senhaHash = await bcrypt.hash(novaSenha, 10);
+
+    db.query(
+      `UPDATE usuarios
+       SET senha = ?, reset_token = NULL, reset_expira = NULL
+       WHERE reset_token = ? AND reset_expira > NOW()`,
+      [senhaHash, token],
+      (err, result) => {
+        if (err) return res.status(500).json(err);
+
+        if (result.affectedRows === 0) {
+          return res.status(400).json({ mensagem: 'Token inválido ou expirado' });
+        }
+
+        res.json({ mensagem: 'Senha redefinida com sucesso!' });
+      }
+    );
+  } catch (error) {
+    res.status(500).json({ mensagem: 'Erro ao redefinir senha' });
+  }
+};
+
+
+
+
 
 // READ
 exports.listarUsuario = (req, res) => {
