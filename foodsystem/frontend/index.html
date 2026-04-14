@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Food System</title>
+
+  <!-- Fonte bonita -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <!-- MASCOTE -->
+  <div class="mascote-area">
+    <img src="../img/mascote.png" class="mascote">
+  </div>
+
+  <!-- CONTEÚDO -->
+  <div class="conteudo">
+
+    <div class="header">
+      <h1>Food System</h1>
+      <p>
+        Tenha controle total do seu negócio com uma plataforma moderna,
+        rápida e inteligente. Gerencie pedidos, produtos e clientes com eficiência
+        e leve sua operação para outro nível.
+      </p>
+    </div>
+
+    <!-- LOGIN -->
+    <div class="card" id="loginBox">
+      <h2>Login</h2>
+
+      <input type="email" id="email" placeholder="Email">
+
+      <div class="senha-box">
+        <input type="password" id="senha" placeholder="Senha">
+        <span onclick="toggleSenha()">👁️</span>
+      </div>
+
+      <button onclick="login()">Entrar</button>
+
+      <button class="secondary-btn" onclick="mostrarCadastro()">
+        Criar conta
+      </button>
+
+      <button class="secondary-btn" onclick="esqueciSenha()">
+        Esqueci a senha
+      </button>
+
+      <p id="msg"></p>
+    </div>
+
+  </div>
+
+</div>
+
+  <!-- CADASTRO -->
+  <div class="card hidden" id="cadastroBox">
+    <h2>Cadastrar</h2>
+
+    <input type="text" id="nomeCadastro" placeholder="Nome">
+    <input type="email" id="emailCadastro" placeholder="Email">
+    <input type="password" id="senhaCadastro" placeholder="Senha">
+
+    <button onclick="cadastrar()">Cadastrar</button>
+
+    <button class="secondary-btn" onclick="voltarLogin()">
+  Voltar para login
+</button>
+
+    <p id="msgCadastro"></p>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

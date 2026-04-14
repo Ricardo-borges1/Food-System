@@ -1,0 +1,194 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* FUNDO COM DEGRADÊ SUAVE */
+body {
+  height: 100vh;
+  background: linear-gradient(135deg, #001a10, #00c853, #e8f5e9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CONTAINER CENTRAL */
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* 🔥 AQUI */
+  gap: 60px;
+  height: 100vh;
+  padding: 40px;
+}
+
+/* HEADER */
+.header {
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  font-size: 48px;
+  color: #003c1f;
+  margin-left: 30px;
+}
+
+.header p {
+  font-size: 18px;
+  margin-top: 10px;
+  color: #033d1f;
+  margin-left: -40px;
+}
+
+.card {
+  width: 100%;
+}
+
+/* CARD */
+.card {
+  width: 420px; /* aumentei */
+  margin: auto;
+  margin-left: -10px;
+  padding: 50px; /* mais espaçamento */
+  border-radius: 20px;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  animation: fade 0.5s ease;
+}
+
+/* ANIMAÇÃO */
+@keyframes fade {
+  from { opacity: 0; transform: translateY(20px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+/* ESCONDER */
+.hidden {
+  display: none;
+}
+
+/* INPUTS */
+input {
+  width: 100%;
+  padding: 14px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+/* SENHA */
+.senha-box {
+  position: relative;
+}
+
+.senha-box span {
+  position: absolute;
+  right: 10px;
+  top: 14px;
+  cursor: pointer;
+}
+
+/* BOTÃO */
+button {
+  width: 100%;
+  padding: 16px; /* maior */
+  margin-top: 15px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(45deg, #00e676, #00c853);
+  color: #002b1a;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 15px;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #00e676;
+}
+
+/* LINKS */
+.link {
+  margin-top: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.secondary-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 1px solid #00c853;
+  background: transparent;
+  color: #003c1f;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 500;
+}
+
+.secondary-btn:hover {
+  background: rgba(0, 200, 83, 0.1);
+  transform: scale(1.03);
+}
+
+.mascote-area {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin-left: -360px;
+}
+
+.mascote {
+  width: 850px; /* GRANDE 🔥 */
+  animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0 20px 30px rgba(0,0,0,0.3));
+  margin-left: 70px;
+}
+
+.conteudo {
+  flex: 1;
+  max-width: 500px;
+}
+
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+
+/* 🔥 AJUSTE SÓ NA TELA DE CADASTRO */
+body.cadastro-ativo .mascote-area {
+  margin-left: -270px; /* menos puxado */
+}
+
+body.cadastro-ativo .mascote {
+  width: 650px; /* opcional: menor */
+}
+
+body.cadastro-ativo .header h1 {
+  font-size: 48px;
+  color: #003c1f;
+  margin-left: -50px;
+}
+
+
+
+body.cadastro-ativo .header p {
+  font-size: 18px;
+  margin-top: 10px;
+  color: #033d1f;
+  margin-left: -140px;
+}
