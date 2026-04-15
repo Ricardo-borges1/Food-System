@@ -53,7 +53,7 @@ function irPara(secao) {
   if (secao === 'produtos') {
     window.location.href = 'produtos.html';
   } else if (secao === 'pedidos') {
-    alert('Tela de pedidos vamos fazer depois');
+    window.location.href = 'pedidos.html';
   } else if (secao === 'usuarios') {
     alert('Tela de usuários vamos fazer depois');
   }
@@ -123,25 +123,27 @@ async function carregarDashboard() {
     if (totalUsuarios) totalUsuarios.innerText = 'Erro';
   }
 
-  // PEDIDOS
+   // PEDIDOS
   try {
     const resPedidos = await fetch('http://localhost:3000/pedidos');
-    if (!resPedidos.ok) throw new Error('Erro ao buscar pedidos');
+
+    if (!resPedidos.ok) {
+      throw new Error('Erro ao buscar pedidos');
+    }
 
     const pedidos = await resPedidos.json();
     console.log('Pedidos:', pedidos);
 
-    if (pedidosHoje) pedidosHoje.innerText = pedidos.length;
+    document.getElementById('pedidosHoje').innerText = pedidos.length;
 
     const pendentes = pedidos.filter(p => {
-      const status = String(p.status || p.situacao || '').toLowerCase();
+      const status = String(p.status || '').toLowerCase();
       return status === 'pendente';
     });
 
-    if (pedidosPendentes) pedidosPendentes.innerText = pendentes.length;
+    document.getElementById('pedidosPendentes').innerText = pendentes.length;
   } catch (erro) {
     console.error('Erro ao buscar pedidos:', erro);
-    if (pedidosHoje) pedidosHoje.innerText = 'Erro';
-    if (pedidosPendentes) pedidosPendentes.innerText = 'Erro';
-  }
-}
+    document.getElementById('pedidosHoje').innerText = 'Erro';
+    document.getElementById('pedidosPendentes').innerText = 'Erro';
+  }}

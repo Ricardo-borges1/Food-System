@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pedidos - Food System</title>
+  <link rel="stylesheet" href="pedidos.css">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="logo-area">
+        <div class="logo-icon">🍃</div>
+        <div>
+          <h2>Food System</h2>
+          <p>Painel de pedidos</p>
+        </div>
+      </div>
+
+      <nav class="menu">
+        <button onclick="window.location.href='dashboard.html'">🏠 Dashboard</button>
+        <button onclick="window.location.href='produtos.html'">🍔 Produtos</button>
+        <button class="active" onclick="window.location.href='pedidos.html'">🧾 Pedidos</button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <button class="logout-btn" onclick="logout()">Sair</button>
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="topo">
+        <div>
+          <h1>Pedidos</h1>
+          <p>Acompanhe, altere o status e gerencie os pedidos do sistema.</p>
+        </div>
+      </div>
+
+      <div class="resumo-cards">
+        <div class="mini-card">
+          <p>Total de pedidos</p>
+          <h3 id="totalPedidos">0</h3>
+        </div>
+
+        <div class="mini-card">
+          <p>Pendentes</p>
+          <h3 id="totalPendentes">0</h3>
+        </div>
+
+        <div class="mini-card">
+          <p>Concluídos</p>
+          <h3 id="totalConcluidos">0</h3>
+        </div>
+      </div>
+
+      <p id="msg" class="mensagem"></p>
+
+      <div id="listaPedidos" class="lista-pedidos"></div>
+    </main>
+  </div>
+
+  <script src="pedidos.js"></script>
+</body>
+</html>
