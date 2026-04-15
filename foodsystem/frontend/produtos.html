@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produtos - Food System</title>
+  <link rel="stylesheet" href="prdoutos.css">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="logo-area">
+        <div class="logo-icon">🍃</div>
+        <div>
+          <h2>Food System</h2>
+          <p>Painel de produtos</p>
+        </div>
+      </div>
+
+      <nav class="menu">
+        <button onclick="window.location.href='dashboard.html'">🏠 Dashboard</button>
+        <button class="active" onclick="window.location.href='produtos.html'">🍔 Produtos</button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <button class="logout-btn" onclick="logout()">Sair</button>
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="topo">
+        <div>
+          <h1>Produtos</h1>
+          <p>Cadastre, edite e remova produtos do sistema.</p>
+        </div>
+      </div>
+
+      <div class="form-box">
+        <h2 id="tituloFormulario">Cadastrar produto</h2>
+
+        <input type="text" id="nome" placeholder="Nome do produto">
+        <input type="text" id="descricao" placeholder="Descrição">
+        <input type="number" id="preco" placeholder="Preço" step="0.01">
+
+        <div class="acoes-form">
+          <button id="btnSalvar" onclick="salvarProduto()">Cadastrar produto</button>
+          <button id="btnCancelar" class="btn-secundario" onclick="cancelarEdicao()" style="display: none;">
+            Cancelar edição
+          </button>
+        </div>
+      </div>
+
+      <p id="msg" class="mensagem"></p>
+
+      <div class="lista-topo">
+        <h2>Lista de produtos</h2>
+      </div>
+
+      <div id="listaProdutos" class="lista-produtos"></div>
+    </main>
+  </div>
+
+  <script src="produto.js"></script>
+</body>
+</html>

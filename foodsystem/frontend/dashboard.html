@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Food System</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <aside class="sidebar">
+      <div class="logo-area">
+        <div class="logo-icon">🍃</div>
+        <div>
+          <h2>Food System</h2>
+          <p>Painel administrativo</p>
+        </div>
+      </div>
+
+      <nav class="menu">
+        <button onclick="irPara('produtos')">
+          <span>🍔</span> Produtos
+        </button>
+        <button onclick="irPara('pedidos')">
+          <span>🧾</span> Pedidos
+        </button>
+        <button onclick="irPara('usuarios')">
+          <span>👤</span> Usuários
+        </button>
+      </nav>
+
+      <div class="sidebar-mascote">
+  <img src="../img/mascote.png" alt="Mascote Food System">
+  <p id="dicaMascote">Seu assistente do sistema</p>
+</div>
+
+      <button class="logout-btn" onclick="logout()">Sair</button>
+    </aside>
+
+    <main class="main-content">
+        <div class="top-bar">
+            <div class="top-info">
+                <p class="data-hora" id="dataHora"></p>
+            </div>
+        </div>
+      <section class="hero">
+        <div class="hero-text">
+          <h1 id="saudacao"></h1>
+          <p>Gerencie seu sistema de forma moderna, rápida e organizada.</p>
+
+          <div class="quick-actions">
+            <button onclick="irPara('produtos')">➕ Novo Produto</button>
+            <button onclick="irPara('pedidos')">📋 Ver Pedidos</button>
+            <button onclick="irPara('usuarios')">👤 Novo Usuário</button>
+          </div>
+        </div>
+
+        <div class="hero-mascote">
+          <img src="../img/mascote.png" alt="Mascote Food System">
+        </div>
+      </section>
+
+
+
+      <section class="stats-cards">
+  <div class="mini-card">
+    <p>Total de Produtos</p>
+    <h3 id="totalProdutos">0</h3>
+  </div>
+
+  <div class="mini-card">
+    <p>Pedidos Hoje</p>
+    <h3 id="pedidosHoje">0</h3>
+  </div>
+
+  <div class="mini-card">
+    <p>Usuários</p>
+    <h3 id="totalUsuarios">0</h3>
+  </div>
+
+  <div class="mini-card destaque-mini">
+    <p>Pedidos Pendentes</p>
+    <h3 id="pedidosPendentes">0</h3>
+  </div>
+</section>
+
+      <section class="cards">
+        <div class="card" onclick="irPara('produtos')">
+          <div class="card-icon">🍔</div>
+          <h3>Produtos</h3>
+          <p>Cadastre, edite e organize os produtos do sistema.</p>
+        </div>
+
+        <div class="card" onclick="irPara('pedidos')">
+          <div class="card-icon">🧾</div>
+          <h3>Pedidos</h3>
+          <p>Acompanhe os pedidos e visualize o andamento.</p>
+        </div>
+
+        <div class="card" onclick="irPara('usuarios')">
+          <div class="card-icon">👤</div>
+          <h3>Usuários</h3>
+          <p>Gerencie os usuários cadastrados no sistema.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <section class="atividade-recente">
+  <div class="atividade-header">
+    <h2>Atividade recente</h2>
+    <span>Últimas movimentações</span>
+  </div>
+
+  <ul id="atividadeLista">
+    <li>Sistema iniciado com sucesso</li>
+  </ul>
+</section>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

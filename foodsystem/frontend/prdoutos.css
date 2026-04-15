@@ -1,0 +1,292 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(0, 255, 128, 0.12), transparent 25%),
+    linear-gradient(135deg, #062b1f, #0d3d2d, #145c43, #1c7a58);
+  color: white;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 280px;
+  background: linear-gradient(180deg, rgba(6, 43, 31, 0.96), rgba(11, 74, 54, 0.93));
+  backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 25px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #00c853, #69f0ae);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 8px 20px rgba(0, 255, 128, 0.25);
+}
+
+.logo-area h2 {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.logo-area p {
+  color: #c9f7df;
+  font-size: 13px;
+  margin-top: 3px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.menu button {
+  border: none;
+  background: rgba(255, 255, 255, 0.10);
+  color: white;
+  padding: 15px 18px;
+  border-radius: 16px;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.menu button:hover,
+.menu .active {
+  transform: translateX(6px);
+  background: linear-gradient(135deg, rgba(0, 200, 83, 0.95), rgba(105, 240, 174, 0.85));
+  color: #062b1f;
+  box-shadow: 0 12px 25px rgba(0, 255, 128, 0.22);
+}
+
+.sidebar-bottom {
+  margin-top: auto;
+}
+
+.logout-btn {
+  width: 100%;
+  border: none;
+  padding: 14px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #ff5252, #ff6b6b);
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.logout-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(255, 82, 82, 0.30);
+}
+
+.content {
+  flex: 1;
+  padding: 40px;
+}
+
+.topo {
+  margin-bottom: 24px;
+}
+
+.topo h1 {
+  font-size: 38px;
+  margin-bottom: 8px;
+}
+
+.topo p {
+  color: #e6fff1;
+  font-size: 17px;
+}
+
+.form-box {
+  max-width: 650px;
+  background: rgba(255, 255, 255, 0.10);
+  padding: 24px;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.12);
+}
+
+.form-box h2 {
+  margin-bottom: 4px;
+}
+
+.form-box input {
+  padding: 14px 16px;
+  border: none;
+  border-radius: 14px;
+  outline: none;
+  font-size: 15px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #062b1f;
+}
+
+.acoes-form {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.form-box button {
+  padding: 14px 18px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #00c853, #69f0ae);
+  color: #062b1f;
+  cursor: pointer;
+  font-weight: 700;
+  transition: 0.3s ease;
+}
+
+.form-box button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(0, 255, 128, 0.22);
+}
+
+.btn-secundario {
+  background: rgba(255, 255, 255, 0.18) !important;
+  color: white !important;
+}
+
+.mensagem {
+  min-height: 24px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.lista-topo {
+  margin-bottom: 18px;
+}
+
+.lista-topo h2 {
+  font-size: 26px;
+}
+
+.lista-produtos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.produto-card {
+  width: 300px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  padding: 22px;
+  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(12px);
+  transition: 0.3s ease;
+}
+
+.produto-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 34px rgba(0, 255, 128, 0.14);
+}
+
+.produto-card h3 {
+  color: white;
+  margin-bottom: 12px;
+  font-size: 24px;
+}
+
+.produto-card p {
+  margin-bottom: 10px;
+  color: #eafff2;
+  line-height: 1.4;
+}
+
+.produto-preco {
+  font-size: 20px;
+  font-weight: 800;
+  color: #69f0ae;
+  margin-top: 10px;
+  margin-bottom: 16px;
+}
+
+.card-acoes {
+  display: flex;
+  gap: 10px;
+}
+
+.card-acoes button {
+  flex: 1;
+  padding: 11px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: 0.3s ease;
+}
+
+.btn-editar {
+  background: linear-gradient(135deg, #fff176, #ffd54f);
+  color: #3d3200;
+}
+
+.btn-excluir {
+  background: linear-gradient(135deg, #ff5252, #ff6b6b);
+  color: white;
+}
+
+.card-acoes button:hover {
+  transform: translateY(-2px);
+}
+
+.sem-produtos {
+  width: 100%;
+  padding: 30px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  text-align: center;
+  color: #effff5;
+}
+
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .content {
+    padding: 20px;
+  }
+
+  .produto-card {
+    width: 100%;
+  }
+}
